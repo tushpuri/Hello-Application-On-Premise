@@ -1,7 +1,7 @@
 pipeline {  
 	agent any
 	parameters {
-		string(name: 'Mule_Home', defaultValue: 'C:\AnypointStudio-7.5.1-win64\AnypointStudio\mule-enterprise-standalone-4.3.0', description: 'On-Premise location to deploy the application')
+		string(name: 'Mule_Home', defaultValue: '', description: 'On-Premise location to deploy the application')
 		string(name: 'Application_Name', defaultValue: 'ChangeIt', description: 'Application Name')
 		string(name: 'Mule_Version', defaultValue: '4.3.0', description: 'Runtime Version')
 	}
