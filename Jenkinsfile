@@ -1,9 +1,7 @@
 pipeline {  
 	agent any
 	parameters {
-        	string(name: 'Environment', defaultValue: 'Sandbox', description: 'Environment Name')
-		string(name: 'Workers', defaultValue: '1', description: 'Number of Workers for the Application')
-		string(name: 'Workers_Type', defaultValue: 'MICRO', description: 'Worker Type')
+		string(name: 'Mule_Home', defaultValue: '', description: 'On-Premise location to deploy the application')
 		string(name: 'Application_Name', defaultValue: 'ChangeIt', description: 'Application Name')
 		string(name: 'Mule_Version', defaultValue: '4.3.0', description: 'Runtime Version')
 	}
@@ -25,12 +23,12 @@ pipeline {
         		}   
 		}
                stage('Deploy CloudHub') {
-		       environment {
-                		ANYPOINT_CREDENTIALS = credentials('Anypoint_Studio')
-            		}
+		       //environment {
+                	//	ANYPOINT_CREDENTIALS = credentials('Anypoint_Studio')
+            		//}
 		       steps {
 			       echo 'Deploying only because of code commit...'
-			       bat "mvn package deploy -DmuleDeploy"
+			       bat "mvn package deploy -DmuleDeploy -Dmule.version=${params.Mule_Version} -Dmule.home=${params.Mule_Home} -DapplicationName=${params.Application_Name}"
 		       }    
 	       }  
 	}
