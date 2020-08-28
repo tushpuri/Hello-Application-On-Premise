@@ -27,7 +27,7 @@ pipeline {
             		}
 		       steps {
 			       echo 'Deploying only because of code commit...'
-			       bat "mvn package deploy -DmuleDeploy -Danypoint.environment=${params.Environment} -Danypoint.username=$ANYPOINT_CREDENTIALS_USR -Danypoint.password=$ANYPOINT_CREDENTIALS_PSW -Danypoint.workers=${params.Workers} -Danypoint.workersType=${params.Workers_Type} -Danypoint.applicationName=${params.Application_Name} -Danypoint.muleVersion=${params.Mule_Version} -DobjectStoreV2=true"
+			       bat "mvn package deploy -DmuleDeploy"
 		       }    
 	       }  
 	}
