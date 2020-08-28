@@ -7,6 +7,9 @@ pipeline {
 		string(name: 'Application_Name', defaultValue: 'ChangeIt', description: 'Application Name')
 		string(name: 'Mule_Version', defaultValue: '4.3.0', description: 'Runtime Version')
 	}
+	options {
+		timeout(time: 1, unit: 'HOURS') 
+	}
 	
 	stages {
 		stage('Build Application') {
